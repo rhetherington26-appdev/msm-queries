@@ -49,3 +49,26 @@
 </dl>
 
 <hr>
+
+<h1>Filmography</h1>
+
+<table border="1">
+<tr>
+ <td>Title</td>
+ <td>Year</td>
+ <td>Director</td>
+ <td>Character</td>
+ <td></td>
+</tr>
+<tr><% @characters.each do |role|%>
+ <% movie = Movie.all.where( :id => role.movie_id).at(0)%>
+ <td><%= movie.title%></td>
+ <td><%= movie.year%></td>
+ <td><%= Director.all.where( :id => movie.director_id).at(0).name%></td>
+ <td><%= role.name%></td>
+ <td><a href="/movies/<%= movie.id%>">Show Details</td>
+ </tr>
+ <% end%>
+</table>
+
+
